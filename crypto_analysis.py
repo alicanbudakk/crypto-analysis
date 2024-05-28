@@ -240,3 +240,4 @@ if __name__ == "__main__":
         display_live_data(data)
     except Exception as e:
         logging.error(f"Error in main program: {e}")
+
