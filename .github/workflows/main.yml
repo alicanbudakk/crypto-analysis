@@ -1,0 +1,27 @@
+name: Crypto Analysis
+
+on:
+  schedule:
+    # Runs at the start of every hour
+    - cron: '0 * * * *'
+
+jobs:
+  run-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install tradingview_ta pandas numpy pytz
+
+      - name: Run analysis script
+        run: |
+          python crypto_analysis.py
