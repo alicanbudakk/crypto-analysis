@@ -4,6 +4,7 @@ on:
   schedule:
     # Runs at the start of every hour
     - cron: '0 * * * *'
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
   run-analysis:
@@ -25,3 +26,4 @@ jobs:
       - name: Run analysis script
         run: |
           python crypto_analysis.py
+
