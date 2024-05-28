@@ -169,7 +169,6 @@ def calculate_overall_signal(data):
 
 # Display live data in a detailed table format with color formatting
 def display_live_data(data):
-    clear_output(wait=True)
     table_data = []
     for symbol, details in data.items():
         close_price = details['Close']
@@ -194,29 +193,25 @@ def display_live_data(data):
         return [f'color: {color}']*len(val)
     
     styled_df = df.style.apply(color_coin_name, axis=1)
-    display(styled_df)
     
     # Log the output to a file
-    logging.info(df.to_string())
+    logging.info(styled_df.render())
 
 # Main program for live data
 if __name__ == "__main__":
     interval = Interval.INTERVAL_1_HOUR  # Set interval to 1 hour
 
-    while True:
-        data = {}
-        for asset in assets:
-            symbol = asset["symbol"]
-            exchange = asset["exchange"]
-            data[symbol] = fetch_live_data(symbol, exchange, interval)
-        
-        # Detect patterns and generate signals
-        data = detect_patterns(data)
-        
-        # Calculate overall signal
-        data = calculate_overall_signal(data)
-        
-        # Display live data
-        display_live_data(data)
-        
-        time.sleep(3600)  # Wait for 1 hour before fetching new data
+    data = {}
+    for asset in assets:
+        symbol = asset["symbol"]
+        exchange = asset["exchange"]
+        data[symbol] = fetch_live_data(symbol, exchange, interval)
+    
+    # Detect patterns and generate signals
+    data = detect_patterns(data)
+    
+    # Calculate overall signal
+    data = calculate_overall_signal(data)
+    
+    # Display live data
+    display_live_data(data)
