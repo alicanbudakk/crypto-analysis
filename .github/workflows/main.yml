@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install tradingview_ta pandas numpy pytz
+          pip install tradingview_ta pandas numpy pytz Jinja2
 
       - name: Run analysis script
         run: |
