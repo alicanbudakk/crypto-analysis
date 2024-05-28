@@ -4,7 +4,6 @@ import time
 import pytz
 import logging
 from tradingview_ta import TA_Handler, Interval, Exchange
-from IPython.display import display, clear_output
 
 # Setup logging
 logging.basicConfig(filename='crypto_analysis.log', level=logging.INFO, format='%(asctime)s %(message)s')
