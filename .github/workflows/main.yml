@@ -26,3 +26,9 @@ jobs:
       - name: Run analysis script
         run: |
           python crypto_analysis.py
+
+      - name: Upload log file
+        uses: actions/upload-artifact@v3
+        with:
+          name: crypto_analysis_log
+          path: crypto_analysis.log
