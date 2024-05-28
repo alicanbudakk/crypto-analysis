@@ -46,7 +46,7 @@ score_map = {
 # Fetch live cryptocurrency data from TradingView
 def fetch_live_data(symbol, exchange, interval=Interval.INTERVAL_1_HOUR):
     try:
-        handler = TA_handler(
+        handler = TA_Handler(
             symbol=symbol,
             screener="crypto",
             exchange=exchange,
